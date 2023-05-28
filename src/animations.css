@@ -1,0 +1,78 @@
+/* Initial state when beginning to enter */
+.fade-enter { 
+  opacity: 0%;
+}
+/* State when fully entered */
+.fade-enter.fade-enter-active {
+  opacity: 100%;
+
+  transition: opacity 250ms ease-in-out;
+}
+/* State when starting to exit */
+.fade-exit {
+  opacity: 100%;
+}
+/* State when fully exited */
+.fade-exit.fade-exit-active {
+  opacity: 0%;
+
+  transition: opacity 250ms ease-in-out;
+}
+
+
+
+/* Initial state when beginning to enter */
+.fall-enter { 
+  opacity: 0;
+  transform: translate(0%, 100%);
+  z-index: 1;
+}
+/* State when fully entered */
+.fall-enter.fall-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+
+  transition: opacity 500ms ease-out, transform 500ms ease;
+}
+/* State when starting to exit */
+.fall-exit {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+/* State when fully exited */
+.fall-exit.fall-exit-active {
+  opacity: 0;
+
+  transform: translate(0%, 100%);
+  transition: opacity 500ms ease-out, transform 500ms ease;
+}
+
+/* Initial state when beginning to enter */
+.shrink-enter { 
+  opacity: 0%;
+  /* transform: translate(0%, 100%); */
+  scale: 0% 300%;
+  z-index: 1;
+}
+/* State when fully entered */
+.shrink-enter.shrink-enter-active {
+  opacity: 100%;
+  scale: 100%;
+  /* transform: translate(0, 0); */
+
+  transition: scale 500ms ease-out, opacity 750ms ease-out;
+}
+/* State when starting to exit */
+.shrink-exit {
+  opacity: 100%;
+  scale: 100%;
+  /* transform: translate(0, 0); */
+}
+/* State when fully exited */
+.shrink-exit.shrink-exit-active {
+  opacity: 0%;
+
+  /* transform: translate(0%, 100%); */
+  scale: 200% 0%;
+  transition: scale 500ms ease-out, opacity 750ms ease-out;
+}

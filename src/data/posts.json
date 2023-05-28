@@ -1,0 +1,266 @@
+[
+  {
+    "date": "2021-11-06",
+    "path": "2021-11-06-first-post.md",
+    "title": "My First Blog Post",
+    "subtitle": "AKA: Hello World, Blog Edition™",
+    "snippet": "I wish I had dev blogs from back then, when I was first starting out, that I could go back and cringe at.  I've been messing  with software for so long that it's easy to forget where I came from.",
+    "wordCount": 245
+  },
+  {
+    "date": "2021-11-13",
+    "path": "2021-11-13-bus-factor.md",
+    "title": "Bus Factor 🚍",
+    "subtitle": "And why you should expect some unexpected losses",
+    "snippet": "Unfortunately, that employee left the company a few weeks back and different people were brought in to help with the project.  The exit was sudden and unexpected, and it’s the first time I’ve really experienced the true meaning of bus factor.",
+    "wordCount": 418
+  },
+  {
+    "date": "2021-11-20",
+    "path": "2021-11-20-google-foobar.md",
+    "title": "Google Foobar Challenge",
+    "snippet": "During one of those  searches, Google’s results screen showed a special option to take part in a programming challenge.  The Foobar With Google challenge was something I’d never heard of, but I was immediately excited.",
+    "wordCount": 700
+  },
+  {
+    "date": "2021-11-27",
+    "path": "2021-11-27-working-from-home.md",
+    "title": "Working from home... with children",
+    "snippet": "The kids have been home this week for Thanksgiving break, and the whole experience makes me wonder how we survived 2020.",
+    "wordCount": 722
+  },
+  {
+    "date": "2021-12-04",
+    "path": "2021-12-04-creating-things-from-scratch.md",
+    "title": "Creating things from scratch",
+    "snippet": "It’s an opportunity to play around with Azure databases, GitHub actions, and general good design concepts.  Most importantly, it’s a chance for me to make something useful from scratch.",
+    "wordCount": 856
+  },
+  {
+    "date": "2021-12-11",
+    "path": "2021-12-11-imposter-syndrome.md",
+    "title": "Imposter syndrome",
+    "subtitle": "This blog article is probably terrible",
+    "snippet": "*Great news*: I finished all five levels, and there’s an email from a Google recruiter sitting in my inbox.  *Bad news*: Now I feel like a fraud. 😔",
+    "wordCount": 600
+  },
+  {
+    "date": "2021-12-18",
+    "path": "2021-12-18-long-lost-code.md",
+    "title": "Long lost code",
+    "snippet": "I never finished and released the game, but that's not the worst part.  The worst part is that it's gone now.",
+    "wordCount": 441
+  },
+  {
+    "date": "2021-12-25",
+    "path": "2021-12-25-people-skills.md",
+    "title": "People skills",
+    "subtitle": "You know, that thing ~we all have~ nobody has",
+    "snippet": "Ask anybody to describe a stereotypical programmer and you will probably get a lot of phrases that boil down to  **socially awkward**.",
+    "image": "/images/post-content/Office-Space-People-Skills.gif",
+    "wordCount": 789
+  },
+  {
+    "date": "2022-01-01",
+    "path": "2022-01-01-virtual-reality.md",
+    "title": "Virtual reality",
+    "subtitle": "AKA: We live in the future!",
+    "snippet": "I have spent the last week ignoring my real house to clean virtual ones, taking time off from work to play Job Simulator, and nearly throwing up from trying to jump right into full-motion first-person shooter, and I am absolutely hooked.",
+    "wordCount": 595
+  },
+  {
+    "date": "2022-01-08",
+    "path": "2022-01-08-digital-gardening.md",
+    "title": "Digital Gardening",
+    "subtitle": "Hopefully a better approach than making a master design upfront",
+    "snippet": "I have done many side projects that very quickly felt like a ton of work and planning.  When your unpaid hobby starts to feel like work, it becomes really easy to drop it and do something else.",
+    "tags": [
+      "musings"
+    ],
+    "wordCount": 551
+  },
+  {
+    "date": "2022-01-15",
+    "path": "2022-01-15-game-programming.md",
+    "title": "The Benefits of Game Programming",
+    "subtitle": "And Mom said I'd never get anywhere with these games!",
+    "snippet": "I thought of all this as a non-transferable skill that I was playing around with as a hobby.  If I wanted to get better at *real* software engineering, I needed to make some sort of business app, right?  Maybe not, as it happens.",
+    "tags": [
+      "learning"
+    ],
+    "wordCount": 735
+  },
+  {
+    "date": "2022-01-22",
+    "path": "2022-01-22-back-to-school.md",
+    "title": "Back to School!",
+    "subtitle": "As if I didn't have enough to do already",
+    "snippet": "I could have done it when I first joined the Air Force, back before I had kids to take care of and a wife who I wanted to spend time with.  Instead, I spent a *lot* of time playing video games.",
+    "tags": [
+      "learning",
+      "rants"
+    ],
+    "wordCount": 421
+  },
+  {
+    "date": "2022-02-05",
+    "path": "2022-02-05-structure.md",
+    "title": "Structure",
+    "subtitle": "For my fellow \"It's organized chaos - I know where everything is!\" types",
+    "snippet": "It helps me focus, keeps me from being distracted, and makes me overall more productive.  There's just one problem: **I hate making structure for myself!**",
+    "tags": [
+      "musings"
+    ],
+    "wordCount": 510
+  },
+  {
+    "date": "2022-02-19",
+    "path": "2022-02-19-google-here-i-come.md",
+    "title": "Google, Here I Come!",
+    "subtitle": "🎵 Movin' on up! 🎵",
+    "snippet": "It's official: next month I'll be a Google employee! 😲  The story of how it happened is a little strange, so I'd like to share.",
+    "tags": [
+      "career"
+    ],
+    "hasAffiliate": true,
+    "wordCount": 776
+  },
+  {
+    "date": "2022-03-05",
+    "path": "2022-03-05-balance.md",
+    "title": "Balance, and Not Having Any",
+    "subtitle": "AKA: Thanos would be **furious**",
+    "snippet": "It’s yet another USAF drill weekend, which always serves to highlight that **I’ve got way too much going on right now**.",
+    "tags": [
+      "rants"
+    ],
+    "image": "/images/post-content/balance.jpg",
+    "wordCount": 735
+  },
+  {
+    "date": "2022-03-19",
+    "path": "2022-03-19-imperfect-leaders.md",
+    "title": "Great Leaders are NOT Perfect",
+    "subtitle": "or: How I Learned to Stop Worrying and Love Mistakes",
+    "snippet": "When somebody refuses to admit their mistakes, it erodes trust in that person...  When a leader shifts blame to the people around them, it drives a wedge between them and their subordinates.",
+    "wordCount": 1158
+  },
+  {
+    "date": "2022-04-02",
+    "path": "2022-04-02-bad-memory.md",
+    "title": "The benefits of bad memory",
+    "subtitle": "How my biggest weakness developed my good habits",
+    "snippet": "I have spent my whole life figuring out ways to keep things straight in my head.  Over time, I've developed habits that compensate for my forgetfulness.",
+    "tags": [
+      "productivity"
+    ],
+    "image": "/images/post-content/do-not-forget-sticky-note.jpg",
+    "hasAffiliate": true,
+    "wordCount": 1540
+  },
+  {
+    "date": "2022-04-16",
+    "path": "2022-04-16-things-college-did-not-teach.md",
+    "title": "Things College Didn't Teach You",
+    "subtitle": "Because most jobs don't involve one dev making a calculator",
+    "snippet": "A CS degree is a great foundation on which to build a career.  The problem is that you can't simulate the conditions of a work environment",
+    "tags": [
+      "career",
+      "learning"
+    ],
+    "image": "/images/post-content/textbooks.jpg",
+    "wordCount": 1738
+  },
+  {
+    "date": "2022-04-30",
+    "path": "2022-04-30-working-remotely.md",
+    "title": "Working Remotely",
+    "subtitle": "And what you can do to make it better",
+    "snippet": "My early days of remote work were a struggle, but I learned some lessons that I'd like to share.",
+    "tags": [
+      "career",
+      "productivity"
+    ],
+    "image": "/images/post-content/remote-work.jpg",
+    "hasAffiliate": true,
+    "wordCount": 1846
+  },
+  {
+    "date": "2022-05-14",
+    "path": "2022-05-14-web3.md",
+    "title": "Web 3.0",
+    "subtitle": "It's not what you think it is",
+    "snippet": "I think there will be a cool use for all this new technology, but I don't think we've found it yet.",
+    "image": "/images/post-content/blue-code-tunnel.jpg",
+    "tags": [
+      "rants"
+    ],
+    "wordCount": 1068
+  },
+  {
+    "date": "2022-05-28",
+    "path": "2022-05-28-learning-to-code.md",
+    "title": "How do you start learning how to code?",
+    "subtitle": "A *very* loaded question that I get all the time",
+    "snippet": "When I learned to program, there were so few resources.  Now there are so many free resources - so get started!",
+    "tags": [
+      "learning"
+    ],
+    "image": "/images/post-content/frustrated-guy.jpg",
+    "wordCount": 1394
+  },
+  {
+    "date": "2022-06-25",
+    "path": "2022-06-25-coding-in-chrome.md",
+    "title": "Programming on a Chromebook",
+    "subtitle": "A surprisingly pleasant experience",
+    "snippet": "A Chromebook!?  For a software engineer position?  How would that even work?  Well, let me tell you...",
+    "wordCount": 764
+  },
+  {
+    "date": "2022-07-23",
+    "path": "2022-07-23-digital-gardening-followup.md",
+    "title": "Digital Gardening Follow-up",
+    "subtitle": "AKA: I don't have a green thumb, even online",
+    "snippet": "My plan was to let this site slowly grow into something much bigger.  This is a follow-up to see how that went.",
+    "wordCount": 689
+  },
+  {
+    "date": "2022-08-20",
+    "path": "2022-08-20-testing.md",
+    "title": "Automated Testing",
+    "subtitle": "The necessary evil we all love to hate.",
+    "snippet": "Some people ***love*** automated tests.  Other people ***hate*** automated tests.  My opinion?  Well, it's complicated...",
+    "wordCount": 931
+  },
+  {
+    "date": "2022-09-03",
+    "path": "2022-09-03-six-months-at-google.md",
+    "title": "Six months at Google",
+    "subtitle": "AKA: When do I stop calling myself a Noogler?",
+    "snippet": "I still can't believe I work at Google.  Now that I've gotten used to it (*sort of*), I want to share what it's like working for Big G.",
+    "wordCount": 1075
+  },
+  {
+    "date": "2022-09-17",
+    "path": "2022-09-17-remaking-my-game.md",
+    "title": "Recreating my old game",
+    "subtitle": "And doing it so much faster... sort of",
+    "snippet": "I'm really productive when I work on my game.  However... when am I supposed to work on my game?",
+    "wordCount": 891
+  },
+  {
+    "date": "2024-01-01",
+    "path": "2024-01-01-test.md",
+    "title": "Markdown test",
+    "subtitle": "Cuz how else will I know if it works?",
+    "snippet": "Excerpt goes here.",
+    "tags": [
+      "tag1",
+      "tag2",
+      "tag3"
+    ],
+    "image": "/images/post-content/n64 kid.gif",
+    "wordCount": 145
+  }
+]
