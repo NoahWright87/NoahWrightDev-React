@@ -68,8 +68,6 @@ export default function Home() {
                     src="images/noahwright.jpg"
                     alt="Photo of Noah Wright"
                     sx={{
-                        // display: 'flex',
-                        // flex: '1 0 auto',
                         height: '200px',
                         width: '200px',
                     }}

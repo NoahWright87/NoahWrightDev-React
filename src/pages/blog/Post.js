@@ -5,7 +5,6 @@ import { Link as RouterLink } from "react-router-dom";
 
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import TocIcon from '@mui/icons-material/Toc';
 import { Button, Card, CardActionArea, Chip, Link, Paper, Typography } from '@mui/material';
 import { Box } from '@mui/system';
@@ -14,6 +13,12 @@ import { useParams } from "react-router-dom";
 import { getPostContent } from '../../api/Blog';
 import MainContainer from '../../components/layout/MainContainer';
 import allPosts from '../../data/posts.json';
+import MarkdownLink from '../../components/markdown/MarkdownLink';
+import MarkdownParagraph from '../../components/markdown/MarkdownParagraph';
+import MarkdownCodeBlock from '../../components/markdown/MarkdownCodeBlock';
+import MarkdownHeading, { titleToId } from '../../components/markdown/MarkdownHeading';
+import MarkdownBreak from '../../components/markdown/MarkdownBreak';
+import MarkdownImage from '../../components/markdown/MarkdownImage';
 
 export default function Post() {
     const { id } = useParams();
@@ -51,8 +56,6 @@ export default function Post() {
         <Box
             sx={{
                 color: 'primary.contrastText',
-                // backgroundColor: 'primary.dark',
-                // opacity: '0.50',
                 padding: 2,
                 minHeight: '35vh',
                 alignItems: 'center',
@@ -137,7 +140,6 @@ export default function Post() {
             <Box
                 sx={{
                     width: '100%',
-                    // left: '0vw',
                 }}
             >
                 {/* TODO: Put this somewhere common, reference from several places
@@ -207,7 +209,6 @@ export function PostSnippet(post) {
                 sx={{
                     display: 'flex',
                     flexDirection: 'row',
-                    // minHeight: '400px',
                     height: '100%',
 
                     backgroundImage: `url(${post.image})`,
@@ -239,7 +240,6 @@ export function PostSnippet(post) {
                     <Typography
                         variant="body1"
                         sx={{
-                            // slightly larger text
                             fontSize: '1.25rem',
                         }}
                     >
@@ -276,7 +276,6 @@ function RelatedPostSnippet(args) {
     let post = args.post;
     return <>
         <Card
-            // variant='outlined'
             sx={{
                 display: 'flex',
                 p: 1,
@@ -348,18 +347,12 @@ function markdownToC(content) {
         </Box>
     </>;
 }
-function titleToId(title) {
-    return title.trim().replace(/[^a-zA-Z0-9]/g, "-").toLowerCase().replace(/^-+/, "");
-}
 function tocEntry(markdown) {
     let title = markdown.replace(/^#+/, "").trim();
     let level = markdown.match(/^#+/)[0].length;
-    // let dashes = "-".repeat(level);
     let id = titleToId(markdown);
     
     return <>
-        {/* <li key={id}> */}
-            {/* <a href={'#' + id}>{title}</a> */}
             <Button
                 key={id}
                 component='a'
@@ -373,7 +366,6 @@ function tocEntry(markdown) {
             >
                 {title}
             </Button>
-        {/* </li> */}
     </>;
 }
 
@@ -386,204 +378,7 @@ function readingTimeFor(words) {
 
 // Markdown components
 // TODO: Move them to their own files in components folder
-function MarkdownHeading({children, ...props}) {
-    // Modified from: https://gist.github.com/sobelk/16fe68ff5520b2d5e2b6d406e329e0de
-    const level = Number(props.node.tagName.match(/h(\d)/)?.slice(1));
-    if (level && children && typeof children[0] === "string") {
-            const id = titleToId(children[0]);
-        // return React.createElement(
-        //     props.node.tagName, {id}, children
-        // )
-        return <Typography
-            variant={'h' + level}
-            id={id}
-        >
-            {children}
-        </Typography>
-    } else {
-        console.log("TODO: Am I hitting this?  Why am I hitting this?");
-        return React.createElement(props.node.tagName, props, children);
-    }
-}
 
-const affiliates = [
-    'amazon.com',
-    'amzn.to',
-    'amzn.com',
-];
-function MarkdownLink({children, ...props}) {
-    // If HREF contains an affiliate link, add an indicator
-    let affiliate = props.href && affiliates.some(affiliate => props.href.includes(affiliate));
-    let external = props.href[0] !== "/";
-
-    // TODO: Create real affiliate warning -- maybe a pop-up description with link for more info?
-    let linkDecorator
-        = affiliate ? <sup>Ad</sup>
-        : external ? <sup><ExitToAppIcon fontSize='small' /></sup>
-        : <></>;
-
-    return <>
-        <Link component={RouterLink} to={props.href} {...props}>
-            {children}
-        </Link>
-        {linkDecorator}
-        {/* &nbsp; */}
-    </>
-}
-
-
-function MarkdownParagraph({children, ...props}) {
-    return <Typography
-        variant='body1'
-        sx={{
-            textIndent: '2em',
-        }}
-    >
-        {children}
-    </Typography>
-}
-
-function MarkdownCodeBlock({children, ...props}) {
-    // Extract language from className
-    let language = props?.className?.slice(9) ?? "";
-    let inline = props.inline ?? false;
-
-    console.log("props", props);
-    console.log("children", children);
-
-    switch (language) {
-        case 'quote': return <MarkdownQuote {...props}>{children}</MarkdownQuote>;
-        case 'tldr': return <MarkdownTldr {...props}>{children}</MarkdownTldr>;
-        // TODO: Make the default have a colored box around it -- maybe put it on Paper?
-        default: 
-            if (inline) {
-                console.log("Inline code block");
-                return <MarkdownCodeInline {...props}>{children}</MarkdownCodeInline>;
-            } else {
-                return <>
-                    <Box
-                        sx={{
-                            backgroundColor: 'info.light',
-                            p: 1,
-                            mx: 1,
-                        }}
-                    >
-                        <Typography
-                            variant='h4'
-                        >
-                            {language}
-                        </Typography>
-                        {children}
-                    </Box>
-                </>;
-            }
-    }
-
-}
-function MarkdownCodeInline({children, ...props}) {
-    return <>
-        <Typography
-            sx={{
-                backgroundColor: 'info.light',
-                display: 'inline',
-                px: 0.25,
-                mx: 0.25,
-            }}
-        >
-            <code>{children}</code>
-        </Typography>
-    </>
-}
-function MarkdownTldr({children, ...props}) {
-    return <>
-        <Paper
-            elevation={4}
-            sx={{
-                backgroundColor: 'info.light',
-                p: 1,
-                mx: 1,
-            }}
-        >
-            <Typography
-                variant='h4'
-            >
-                TL;DR:
-            </Typography>
-            <Typography
-                variant='body1'
-            >
-                {children}
-                {/* <ReactMarkdown children={children} remarkPlugins={[remarkGfm]} /> */}
-            </Typography>
-        </Paper>
-    </>
-}
-
-function MarkdownQuote({children, ...props}) {
-    let lastDash = children && children[0].lastIndexOf("-");
-    let name, quote;
-    if (lastDash > -1) {
-        name = children[0].slice(lastDash + 1);
-        quote = children[0].slice(0, lastDash);
-    }
-
-    return <>
-        <Paper
-            elevation={4}
-            sx={{
-                backgroundColor: 'info.light',
-                p: 1,
-                mx: 1,
-            }}
-        >
-            <Typography
-                variant='h4'
-            >
-                Quote:
-            </Typography>
-            <Typography
-                variant='body1'
-            >
-                {quote}
-            </Typography>
-            {name && <Typography
-                variant='body1'
-                sx={{
-                    textAlign: 'right',
-                }}
-            >
-                - {name}
-            </Typography>}
-        </Paper>
-    </>
-}
-
-function MarkdownBreak({children, ...props}) {
-    // A box to use as a horizontal rule
-    return <Box
-        sx={{
-            width: '100%',
-            height: '2px',
-            backgroundColor: 'primary.main',
-            my: 1.5,
-        }}
-    >
-
-    </Box>
-}
-
-
-function MarkdownImage({children, ...props}) {
-    return <Box>
-        <img {...props}
-            style={{
-                display: 'block',
-                margin: 'auto',
-                alignContent: 'center',
-            }}
-        />
-    </Box>
-}
 
 
 

@@ -5,6 +5,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { Box, Button, Link, Typography } from '@mui/material';
 import * as React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { contactOptions } from '../../data/contact';
 
 export default function Footer() {
     return <footer>
@@ -14,7 +15,6 @@ export default function Footer() {
                 width: '100%',
                 minHeight: '50px',
                 backgroundColor: 'primary.light',
-                // backgroundColor: 'transparent',
                 color: 'primary.contrastText',
                 flexShrink: 0,
                 flexDirection: 'column',
@@ -29,12 +29,11 @@ export default function Footer() {
                     justifyContent: 'center',
                 }}
             >
-                {footerLinkInfo.map((linkInfo) => {
+                {contactOptions.map((linkInfo) => {
                     return <Button
                         key={linkInfo.label}
                         variant="contained"
                         href={linkInfo.url}
-                        // startIcon={<img src={linkInfo.icon} />}
                         startIcon={linkInfo.icon}
                         color="info"
                         sx={{
@@ -63,15 +62,8 @@ export default function Footer() {
                     <Link
                         to="terms"
                         underline="hover"
-                        // color='primary.contrastText'
-                        // color='secondary'
                         color='inherit'
                         component={RouterLink}
-
-                        sx={{
-                            // color: 'white',
-                            // mx: 1,
-                        }}
                     >See terms for details.</Link>
                 </Typography>
             </Box>
@@ -79,25 +71,25 @@ export default function Footer() {
     </footer>;
 }
 
-const footerLinkInfo = [
-    {
-        label: "Email",
-        url: "mailto:noah@noahwright.dev",
-        icon: <EmailIcon color='secondary.light' />,
-    },
-    {
-        label: "Twitter",
-        url: "https://twitter.com/noah_wright",
-        icon: <TwitterIcon color='secondary.light' />,
-    },
-    {
-        label: "GitHub",
-        url: "https://github.com/noahwright87",
-        icon: <GitHubIcon color='secondary.light' />,
-    },
-    {
-        label: "LinkedIn",
-        url: "https://www.linkedin.com/in/noah-wright-dev/",
-        icon: <LinkedInIcon color='secondary.light' />,
-    },
-];
+// const footerLinkInfo = [
+//     {
+//         label: "Email",
+//         url: "mailto:noah@noahwright.dev",
+//         icon: <EmailIcon color='secondary.light' />,
+//     },
+//     {
+//         label: "Twitter",
+//         url: "https://twitter.com/noah_wright",
+//         icon: <TwitterIcon color='secondary.light' />,
+//     },
+//     {
+//         label: "GitHub",
+//         url: "https://github.com/noahwright87",
+//         icon: <GitHubIcon color='secondary.light' />,
+//     },
+//     {
+//         label: "LinkedIn",
+//         url: "https://www.linkedin.com/in/noah-wright-dev/",
+//         icon: <LinkedInIcon color='secondary.light' />,
+//     },
+// ];

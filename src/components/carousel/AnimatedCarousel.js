@@ -78,9 +78,6 @@ export function AnimatedCarousel(props) {
           variant="contained"
           component={Link}
           to={linkUrl}
-          sx={{
-            // float: 'right',
-          }}
         >
           {linkText}
         </Button>}
@@ -90,8 +87,6 @@ export function AnimatedCarousel(props) {
         sx={{
           maxWidth: {width},
           flexGrow: 1,
-          // backgroundColor: 'primary.dark',
-          // p: 0.5,
           height: "100%",
         }}
       >
@@ -103,7 +98,6 @@ export function AnimatedCarousel(props) {
           >
             <Box
               sx={{
-                  // height: 1,
                   height: {height},
               }}
             >
@@ -113,13 +107,10 @@ export function AnimatedCarousel(props) {
         </SwitchTransition>
 
         <MobileStepper
-          variant="dots" //"text"
+          variant="dots"
           steps={maxItems}
           position="static"
           activeStep={activeItem}
-          // sx={{
-          //   backgroundColor: "primary.main"
-          // }}
           nextButton={
             <Button
               size="small"

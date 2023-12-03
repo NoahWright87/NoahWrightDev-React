@@ -6,7 +6,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import PersonIcon from '@mui/icons-material/Person';
 import WorkIcon from '@mui/icons-material/Work';
 import AppBar from '@mui/material/AppBar';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -17,44 +16,10 @@ import Toolbar from '@mui/material/Toolbar';
 import * as React from 'react';
 
 
-import { FormControlLabel, Switch } from '@mui/material';
+import { FormControlLabel, Icon, SvgIcon, Switch } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { darkTheme, darkThemeHighContrast, lightTheme, lightThemeHighContrast } from '../..';
-
-const siteName = "NWDev";
-const siteLogoMd = <Button
-    to="/"
-    component={Link}
-  >
-  <Avatar
-    alt={siteName}
-    variant="square"
-    src="/images/branding/nw-slashes.svg"
-
-    sx={{
-      display: { xs: 'none', md: 'flex' },
-      mr: 1,
-      width: "100px",
-    }}
-  />
-</Button>;
-
-const siteLogoXs = <Button
-    to="/"
-    component={Link}
-  >
-  <Avatar
-    alt={siteName}
-    variant="square"
-    src="/images/branding/nw-slashes.svg"
-
-    sx={{
-      display: { xs: 'flex', md: 'none' },
-      mr: 1,
-      width: "100px",
-    }} 
-  />
-</Button>;
+import { darkTheme, darkThemeHighContrast, lightTheme, lightThemeHighContrast } from '../../Themes';
+import { LogoButton } from '../logo/Logo';
 
 const menuData = [
   {
@@ -84,7 +49,7 @@ const menuData = [
   },
 ];
 
-export default function Header({setTheme}) {
+export default function Header({setTheme, theme}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -139,11 +104,14 @@ export default function Header({setTheme}) {
   const navButtonsMenu = <>
     <IconButton
       size="large"
-      aria-label="account of current user"
+      aria-label="Menu with display options"
       aria-controls="menu-appbar"
       aria-haspopup="true"
       onClick={handleOpenNavMenu}
       color="inherit"
+      sx={{
+        display: { xs: 'flex', md: 'none' },
+      }}
     >
       <MenuIcon />
     </IconButton>
@@ -175,8 +143,6 @@ export default function Header({setTheme}) {
       {menuData.map((menuItem) => (
         <MenuItem
           key={menuItem.label}
-          // variant="contained"
-          // color="secondary"
           to={menuItem.link}
           component={Link}
           sx={{
@@ -189,7 +155,8 @@ export default function Header({setTheme}) {
           {menuItem.label}
         </MenuItem>
       ))}
-      <FormControlLabel
+      {/* TODO: Implement light/dark color and high/low contrast */}
+      {/* <FormControlLabel
         control={
           <Switch
             checked={displayState.isDark}
@@ -214,9 +181,8 @@ export default function Header({setTheme}) {
             color="primary"
           />
         }
-        // label="High contrast"
         label={displayState.isHighContrast ? "High contrast" : "Low contrast"}
-      />
+      /> */}
     </Menu>
   </>;
 
@@ -231,10 +197,7 @@ export default function Header({setTheme}) {
       >
         <Container>
           <Toolbar disableGutters>
-            {siteLogoMd}
-            {siteLogoXs}
-
-
+            <LogoButton theme={theme} />
             <Box
               sx={{
                 flexGrow: 1,
@@ -248,7 +211,6 @@ export default function Header({setTheme}) {
             <Box sx={{
               flexGrow: 1,
               display: 'flex',
-              // display: { xs: 'flex', md: 'none' },
               justifyContent: 'flex-end',
             }}>
               {navButtonsMenu}

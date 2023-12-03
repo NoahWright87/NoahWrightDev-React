@@ -39,15 +39,6 @@ export default function About() {
                     >
                         Hi, I'm Noah!
                     </Typography>
-                    {/* <Typography
-                        variant="h3"
-
-                    >
-                        I'm Noah Wright, and I'm a software engineer.
-                        This is my little slice of the internet where
-                        I share the things I know while trying to
-                        learn in public.
-                    </Typography> */}
                 </Box>
             </Box>
             <Box
@@ -77,19 +68,6 @@ export default function About() {
         disableTitle
         banner={banner}
     >
-        {/* <Typography
-            variant="h1"
-        >
-            Hi, I'm Noah
-        </Typography> */}
-        {/* TODO: Better formatting all around */}
-        {/* <img
-            src="images/noahwright-sm.jpg"
-            alt="Noah Wright"
-            style={{ float: "right", margin: "0 0 1em 1em" }}
-        /> */}
-
-        {/* TODO: Have a linter make these lines shorter  */}
         <Paper
             elevation={8}
             // Center the paper vertically and horizontally
@@ -117,7 +95,6 @@ export default function About() {
                 sx={{
                     textAlign: "center",
                     fontStyle: "italic",
-                    // fontWeight: "bold",
                     fontSize: "1.2em",
                     color: "primary.contrastText",
                     backgroundColor: "primary.main",

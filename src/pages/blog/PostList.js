@@ -36,13 +36,10 @@ export default function PostList() {
         <Box
             sx={{
                 padding: '0px',
-                // backgroundColor: 'primary.light',
-                // border: '1px solid',
                 display: 'flex',
                 flexDirection: 'row',
                 
             }}
-            // variant="outlined"
             component="form"
             noValidate
             autoComplete="off"

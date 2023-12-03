@@ -15,8 +15,6 @@ function retrieveFrontMatter(content) {
     // Parse frontMatter YAML into object
     let results = yaml.load(frontMatter);
 
-
-
     return results;
 }
   

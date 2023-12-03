@@ -69,14 +69,3 @@ export function stripFrontmatter(content) {
 
     return content.slice(endPos+frontMatterMarker.length);
   }
-// export function retrieveFrontMatter(content) {
-//     let startPos = content.search(frontMatterMarker) + frontMatterMarker.length;
-//     let endPos = content.slice(startPos).search(frontMatterMarker) + startPos;
-
-//     let frontMatter = content.slice(startPos, endPos);
-
-//     const yaml = require('js-yaml');
-//     // Parse frontMatter YAML into object
-//     return yaml.load(frontMatter);
-//     // return content.slice(startPos+frontMatterMarker.length-1, endPos);
-//   }

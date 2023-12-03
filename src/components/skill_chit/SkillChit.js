@@ -97,7 +97,6 @@ export const SkillOptions = {
   Leadership: {
     key: 13,
     label: "Leadership",
-    // logoSrc: "icons/leadership.png", //TODO: Find a logo
   },
   Unity: {
     key: 14,
@@ -128,7 +127,6 @@ export const SkillOptions = {
   WebApis: {
     key: 19,
     label: "Web APIs",
-    // logoSrc: // TODO: Find a logo
     logoText: "🔌",
   },
   Php: {

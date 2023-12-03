@@ -1,10 +1,10 @@
 import KeyboardArrowUp from '@mui/icons-material/KeyboardArrowUp';
-import { Box, Fab, Typography, useTheme } from "@mui/material";
+import { Box, Fab, Typography, createSvgIcon, useTheme } from "@mui/material";
 import { Container, alpha } from "@mui/system";
 import { useEffect } from "react";
 
 
-const nwSlashes = "/\\/ \\/\\/";
+const nwSlashes = "NW";
 
 export default function MainContainer(props) {
     let theme = useTheme();
