@@ -1,4 +1,5 @@
 import { Avatar, Button, Link } from "@mui/material";
+import { Link as RouterLink } from 'react-router-dom';
 
 const siteName = "NWDev";
 
@@ -10,8 +11,8 @@ export default function Logo({theme}) {
         src="/images/branding/nw-slashes.svg"
 
         sx={{
-        mr: 1,
-        width: "100px",
+            mr: 1,
+            width: "100px",
         }}
     />
 }
@@ -20,7 +21,7 @@ export default function Logo({theme}) {
 export function LogoButton({theme}) {
     return <Button
         to="/"
-        component={Link}
+        component={RouterLink}
     >
         <Logo theme={theme} />
     </Button>;

@@ -1,17 +1,30 @@
 import KeyboardArrowUp from '@mui/icons-material/KeyboardArrowUp';
 import { Box, Fab, Typography, createSvgIcon, useTheme } from "@mui/material";
 import { Container, alpha } from "@mui/system";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 const nwSlashes = "NW";
 
 export default function MainContainer(props) {
     let theme = useTheme();
+    const [showScrollButton, setShowScrollButton] = useState(false);
     
     useEffect(() => {
-        document.title=props.title ? `${nwSlashes} - ${props.title}` : nwSlashes
+        document.title=props.title ? `${nwSlashes} - ${props.title}` : nwSlashes;
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
+
+    const handleScroll = () => {
+        if (window.scrollY > 200) {
+            setShowScrollButton(true);
+        } else {
+            setShowScrollButton(false);
+        }
+    };
 
     return (<Box
         sx={props.sx}
@@ -30,19 +43,20 @@ export default function MainContainer(props) {
             {props.children}
         </Container>
         {props.footer}
-        {/* TODO: Only show if not at the top of the page!! */}
-        <Fab
-            color="secondary"
-            aria-label="Scroll back to top"
-            size="small"
-            sx={{
-                position: 'fixed',
-                bottom: 30,
-                right: 5,
-            }}
-            onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-        >
-            <KeyboardArrowUp />            
-        </Fab>
+        {showScrollButton && (
+            <Fab
+                color="secondary"
+                aria-label="Scroll back to top"
+                size="small"
+                sx={{
+                    position: 'fixed',
+                    bottom: 30,
+                    right: 5,
+                }}
+                onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+            >
+                <KeyboardArrowUp />            
+            </Fab>
+        )}
     </Box>);
 }

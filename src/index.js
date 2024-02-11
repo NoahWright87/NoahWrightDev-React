@@ -140,7 +140,6 @@ function AnimationTest({setTheme, theme}) {
         {/* </TransitionGroup> */}
 
       </Container>
-
       <Footer />
     </Box>
 

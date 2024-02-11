@@ -8,6 +8,9 @@ function SkillChit({ label, logoSrc, logoText }) {
   return (
     <Chip
       avatar={<Avatar src={logoSrc ?? ''}>{logoText}</Avatar>}
+      sx={{
+        backgroundColor: 'rgba(200, 200, 200, 0.33)',
+      }}
       label={label}
     />
   );

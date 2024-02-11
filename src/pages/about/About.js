@@ -1,3 +1,4 @@
+import React from 'react';
 import { Avatar, Box, Container, Link, Paper, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import MainContainer from "../../components/layout/MainContainer";
@@ -91,18 +92,30 @@ export default function About() {
             halt, but other days I could see my software taking the weight of some task off of one of the employees.  People ask what our
             purpose is in this world, but I think it's really simple:
             </Typography>
-            <Typography
+            <Paper
+                elevation={4}
                 sx={{
-                    textAlign: "center",
-                    fontStyle: "italic",
-                    fontSize: "1.2em",
+                    p: 2,
+                    my: 1,
+                    backgroundColor: "primary.dark",
                     color: "primary.contrastText",
-                    backgroundColor: "primary.main",
+                    width: "100%",
+                    textAlign: "center",
+                    verticalAlign: "middle",
                 }}
             >
+            <Typography
+                sx={{
+                    // textAlign: "center",
+                    fontStyle: "italic",
+                    fontSize: "1.5em",
+                    m: "0",
+                }}
+                >
                 {/* TODO: Have this appear more like a banner */}
                 <em>Leave the world better than you found it.</em>
             </Typography>
+            </Paper>
 
             <Typography>
             I know I can't change the world, but I can at least tidy things up as I go.  To me, that means writing the best code I can, trying
@@ -112,19 +125,18 @@ export default function About() {
 
             <Typography>
             If I sound like the kind of person you want to hear more from, check out
-            <Link component={RouterLink} to="blog">my blog posts</Link>.  
+            some of <Link component={RouterLink} to="/blog">my blog posts</Link>.  
             There you will find stories
             of success and failure, life advice, software horror stories, and updates about what I'm up to.
             </Typography>
 
             <Typography>
-            Got an opportunity you'd like to discuss?  Want to give some feedback about the site?  By all means,
-            <Link component={RouterLink} to="contact">get in touch</Link>.
+            Got an opportunity you'd like to discuss?  Want to give some feedback about the site?  By all
+            means, <Link component={RouterLink} to="/contact">get in touch</Link>.
             </Typography>
 
             <Typography>
-            Want to know even more of my background?  Check out 
-            <Link component={RouterLink} to="resume">my resume</Link>.
+            Want to know even more of my background?  Check out <Link component={RouterLink} to="/resume">my resume</Link>.
             </Typography>
         </Paper>
     </MainContainer>;

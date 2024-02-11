@@ -15,6 +15,8 @@ export default function MarkdownLink({ children, ...props }) {
     let affiliate = props.href && affiliates.some(affiliate => props.href.includes(affiliate));
     let external = props.href[0] !== "/";
 
+    
+
     // TODO: Create real affiliate warning -- maybe a pop-up description with link for more info?
     let linkDecorator = affiliate ? <sup>Ad</sup>
         : external ? <sup><ExitToAppIcon fontSize='small' /></sup>

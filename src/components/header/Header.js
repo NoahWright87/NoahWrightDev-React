@@ -210,7 +210,7 @@ export default function Header({setTheme, theme}) {
 
             <Box sx={{
               flexGrow: 1,
-              display: 'flex',
+              display: { xs: 'flex', md: 'none' },
               justifyContent: 'flex-end',
             }}>
               {navButtonsMenu}

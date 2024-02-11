@@ -11,7 +11,8 @@ export default function Footer() {
     return <footer>
         <Box
             sx={{
-                marginTop: 'auto',
+                // marginTop: 'auto',
+                my: 0,
                 width: '100%',
                 minHeight: '50px',
                 backgroundColor: 'primary.light',
@@ -20,6 +21,8 @@ export default function Footer() {
                 flexDirection: 'column',
                 display: 'flex',
                 p: 0.5,
+                bottom: 0,
+                position: 'static',
             }}
         >
             <Box

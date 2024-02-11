@@ -46,7 +46,6 @@ export default function Home() {
                     </Typography>
                     <Typography
                         variant="h3"
-
                     >
                         I'm Noah Wright, and I'm a software engineer.
                         This is my little slice of the internet where
@@ -61,6 +60,7 @@ export default function Home() {
                     display: 'flex',
                     p: '10px',
                     alignItems: 'center',
+                    justifyContent: 'flex-end', // Add this line to right-align the content
                 }}
             >
                 <Avatar 

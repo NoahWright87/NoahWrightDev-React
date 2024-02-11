@@ -36,7 +36,7 @@ export function ProjectSnippet(project) {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
-                boxShadow: 'inset 0 0 0 2000px rgba(0, 0, 0, 0.5)',
+                boxShadow: 'inset 0 0 0 2000px rgba(0, 0, 0, 0.75)',
                 textShadow: '2px 2px 2px #000000',
             }}
         >
@@ -64,11 +64,9 @@ export function ProjectSnippet(project) {
                 </Typography>
                 <Box
                     sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'flex-end',
-                        alignSelf: 'flex-end',
+                        position: 'absolute',
+                        bottom: 10,
+                        right: 10,
                     }}
                 >
                     <SkillChitGroup skills={project.skills} />

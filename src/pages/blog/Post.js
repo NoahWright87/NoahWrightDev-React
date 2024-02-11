@@ -31,7 +31,8 @@ export default function Post() {
     let prevPost = allPosts[i - 1];
     let nextPost = allPosts[i + 1];
 
-    let opacity = post.image ? 0.5 : 1.0;
+    let opacity = post.image ? 0.6 : 0.0;
+    console.log(post.image);
 
     useEffect(() => {
         getPostContent(id).then(post => {
@@ -49,8 +50,9 @@ export default function Post() {
             backgroundColor: 'primary.dark',
             backgroundPosition: 'center',
             // opacity: 0.5,// {opacity}, //todo: make this conditional on whether there's an image
-            boxShadow: 'inset 0 0 0 2000px rgba(0, 0, 0, 0.5)',
-            textShadow: '2px 2px 2px #000000',
+            // boxShadow: 'inset 0 0 0 2000px rgba(0, 0, 0, ' + opacity + ')',
+            boxShadow: 'inset 0 0 0 2000px rgba(255, 255, 255, ' + opacity + ')',
+            textShadow: '2px 2px 2px #666666',
         }}
     >
         <Box
@@ -247,11 +249,9 @@ export function PostSnippet(post) {
                     </Typography>
                     <Box
                         sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'flex-end',
-                            alignSelf: 'flex-end',
+                            position: 'absolute',
+                            bottom: 10,
+                            right: 10,
                         }}
                     >
                         {post.tags && post.tags.length > 0 && post.tags.map(tag => <Chip

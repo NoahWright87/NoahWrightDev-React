@@ -13,7 +13,6 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 // TODOs:
 //  - Image options: side vs background
 //  - Built-in "See all" button
-//  - Prevent cycling if mouse is on the component
 
 export function AnimatedCarousel(props) {
   let title = props.title;
@@ -36,14 +35,24 @@ export function AnimatedCarousel(props) {
   let autoCycle = props.autoCycle ?? false;
   let autoCycleTime = props.autoCycleTime ?? 5000;
 
+  const [isInteracting, setIsInteracting] = React.useState(false);
+
   React.useEffect(() => {
-    if (autoCycle) {
+    if (autoCycle && !isInteracting) {
       const interval = setInterval(() => {
         handleNext();
       }, autoCycleTime);
       return () => clearInterval(interval);
     }
-  });
+  }, [isInteracting]);
+
+  const handleMouseEnter = () => {
+    setIsInteracting(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsInteracting(false);
+  };
 
   const theme = useTheme();
   const [activeItem, setActiveItem] = React.useState(0);
@@ -64,6 +73,8 @@ export function AnimatedCarousel(props) {
         // p: 1,
         my: 2,
       }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <Typography
         variant='h1'
