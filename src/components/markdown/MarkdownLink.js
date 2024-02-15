@@ -2,6 +2,7 @@ import { Link as RouterLink } from "react-router-dom";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Link } from '@mui/material';
 import React from 'react';
+import InfoPopup from "../InfoPopup";
 
 
 const affiliates = [
@@ -15,11 +16,8 @@ export default function MarkdownLink({ children, ...props }) {
     let affiliate = props.href && affiliates.some(affiliate => props.href.includes(affiliate));
     let external = props.href[0] !== "/";
 
-    
-
-    // TODO: Create real affiliate warning -- maybe a pop-up description with link for more info?
-    let linkDecorator = affiliate ? <sup>Ad</sup>
-        : external ? <sup><ExitToAppIcon fontSize='small' /></sup>
+    let linkDecorator = affiliate ? <InfoPopup info={<AdInfo />} children={<sup>Ad</sup>} />
+    : external ? <sup><ExitToAppIcon fontSize='small' /></sup>
             : <></>;
 
     return <>
@@ -27,6 +25,11 @@ export default function MarkdownLink({ children, ...props }) {
             {children}
         </Link>
         {linkDecorator}
-        {/* &nbsp; */}
+    </>;
+}
+
+function AdInfo() {
+    return <>
+        Your purchases help support this site.  See <Link component={RouterLink} to="/terms">terms</Link> for details.
     </>;
 }

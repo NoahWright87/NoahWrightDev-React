@@ -1,3 +1,4 @@
+import { FormatQuote } from '@mui/icons-material';
 import { Paper, Typography } from '@mui/material';
 import React from 'react';
 
@@ -16,13 +17,24 @@ export default function MarkdownQuote({ children, ...props }) {
                 backgroundColor: 'info.light',
                 p: 1,
                 mx: 1,
+                position: 'relative',
             }}
         >
-            <Typography
-                variant='h4'
-            >
-                Quote:
-            </Typography>
+            <FormatQuote
+                sx={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    transform: 'scaleX(-1)',
+                }}
+            />
+            <FormatQuote
+                sx={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                }}
+            />
             <Typography
                 variant='body1'
             >
@@ -32,9 +44,10 @@ export default function MarkdownQuote({ children, ...props }) {
                 variant='body1'
                 sx={{
                     textAlign: 'right',
+                    fontStyle: 'italic',
                 }}
             >
-                - {name}
+                {name}
             </Typography>}
         </Paper>
     </>;

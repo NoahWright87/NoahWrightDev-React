@@ -21,7 +21,7 @@ export default function MainContainer(props) {
     const handleScroll = () => {
         if (window.scrollY > 200) {
             setShowScrollButton(true);
-        } else {
+        } else if (window.scrollY < 100) {
             setShowScrollButton(false);
         }
     };
@@ -43,7 +43,7 @@ export default function MainContainer(props) {
             {props.children}
         </Container>
         {props.footer}
-        {showScrollButton && (
+        {(
             <Fab
                 color="secondary"
                 aria-label="Scroll back to top"
@@ -52,6 +52,8 @@ export default function MainContainer(props) {
                     position: 'fixed',
                     bottom: 30,
                     right: 5,
+                    opacity: showScrollButton ? 1 : 0,
+                    transition: 'opacity 0.3s ease-in-out',
                 }}
                 onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
             >

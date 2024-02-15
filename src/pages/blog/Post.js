@@ -23,6 +23,7 @@ import MarkdownImage from '../../components/markdown/MarkdownImage';
 export default function Post() {
     const { id } = useParams();
     const [content, setContent] = useState(null);
+    const [showToc, setShowToc] = useState(false);
 
     // Get metadata from allPosts by id
     let i = allPosts.findIndex(post => post.path === id);
@@ -43,7 +44,7 @@ export default function Post() {
     let banner = <>
     <Box
         sx={{
-            width: '100vw',
+            width: '100%',
             left: '0vw',
             backgroundImage: `url(${post.image})`,
             backgroundSize: 'cover',
@@ -84,7 +85,7 @@ export default function Post() {
             </Typography>
         </Box>
     </Box>
-    {markdownToC(content)}
+    {markdownToC(content, showToc, setShowToc)}
     </>;
 
     let footer = <Box
@@ -300,7 +301,9 @@ function RelatedPostSnippet(args) {
     </>;
 }
 
-function markdownToC(content) {
+function markdownToC(content, showToc, setShowToc) {
+    console.log(showToc, setShowToc);
+
     if (!content) return <></>;
     const titles = [];
     const headerRegex = /^#{1,6}.+/g
@@ -315,35 +318,64 @@ function markdownToC(content) {
         <Box
             sx={{
                 float: 'right',
-                color: 'secondary.contrastText',
-                backgroundColor: 'secondary.main',
-                padding: 0.5,
-                width: '30vw',
-                right: '0',
+                padding: 0.25,
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center',
+                alignItems: 'end',
                 justifyContent: 'center',
                 position: 'sticky',
                 top: '20vh',
                 bottom: '20vh',
-
+                overflowX: 'hidden',
             }}
         >
-            <Typography
-                variant="h4"
+            <Button
+                onClick={() => setShowToc(!showToc)}
+                variant="contained"
                 sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    position: 'relative',
+                    top: '0',
+                    right: '0%',
+                    // transform: 'translateY(-50%)',
                 }}
             >
-                <TocIcon />Contents
-            </Typography>
-            {titles.map(title => (
-                tocEntry(title)
-            ))}
+                {/* {showToc ? 'Hide TOC' : 'Show TOC'} */}
+                <TocIcon />
+            </Button>
+            <Box
+                sx={{
+                    float: 'right',
+                    color: 'secondary.contrastText',
+                    backgroundColor: 'secondary.main',
+                    padding: 0.5,
+                    // width: '30vw',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'sticky',
+                    top: '20vh',
+                    bottom: '20vh',
+                    transition: 'transform 0.3s ease',
+                    // width : showToc ? '30vw' : '0',
+                    transform: showToc ? 'translateX(0)' : 'translateX(200%)',
+                }}
+                >
+                <Typography
+                    variant="h4"
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    {/* <TocIcon />Contents */}
+                </Typography>
+                {titles.map(title => (
+                    tocEntry(title)
+                ))}
+            </Box>
         </Box>
     </>;
 }
@@ -351,22 +383,32 @@ function tocEntry(markdown) {
     let title = markdown.replace(/^#+/, "").trim();
     let level = markdown.match(/^#+/)[0].length;
     let id = titleToId(markdown);
+
+    const handleClick = () => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
     
-    return <>
-            <Button
-                key={id}
-                component='a'
-                href={'#' + id}
-                variant='contained'
-                sx={{
-                    width: '100%',
-                    textAlign: 'left',
-                    flex: '1',
-                }}
-            >
-                {title}
-            </Button>
-    </>;
+    return (
+        <Button
+            key={id}
+            component='a'
+            href={'#' + id}
+            variant='contained'
+            sx={{
+                width: '100%',
+                textAlign: 'left',
+                flex: '1',
+            }}
+            onClick={handleClick}
+        >
+            {title}
+        </Button>
+    );
 }
 
 function readingTimeFor(words) {

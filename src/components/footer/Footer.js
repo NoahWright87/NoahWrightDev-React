@@ -22,7 +22,7 @@ export default function Footer() {
                 display: 'flex',
                 p: 0.5,
                 bottom: 0,
-                position: 'static',
+                position: 'sticky',
             }}
         >
             <Box

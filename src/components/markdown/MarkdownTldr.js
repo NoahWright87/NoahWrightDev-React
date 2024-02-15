@@ -2,6 +2,8 @@ import { Paper, Typography } from '@mui/material';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import MarkdownLink from './MarkdownLink';
+import MarkdownParagraph from './MarkdownParagraph';
 
 export default function MarkdownTldr({ children, ...props }) {
     return <>
@@ -9,19 +11,26 @@ export default function MarkdownTldr({ children, ...props }) {
             elevation={4}
             sx={{
                 backgroundColor: 'info.main',
-                p: 1,
+                p: 0,
                 mx: 1,
             }}
         >
-            <Typography
-                variant='h4'
-            >
-                TL;DR:
-            </Typography>
+                                                                    <Typography
+                                                                        variant='h4'
+                                                                        sx={{
+                                                                            backgroundColor: 'info.dark',
+                                                                            p: 1,
+                                                                        }}
+                                                                    >
+                                                                        TL;DR:
+                                                                    </Typography>
             <Typography
                 variant='body1'
+                sx={{
+                    lineHeight: 0.75,
+                    px: 1,
+                }}
             >
-                {/* {children} */}
                 <ReactMarkdown
                     children={children.join("")}
                     remarkPlugins={[remarkGfm]}
@@ -31,8 +40,8 @@ export default function MarkdownTldr({ children, ...props }) {
                         // h4: MarkdownHeading,
                         // h5: MarkdownHeading,
                         // h6: MarkdownHeading,
-                        // a: MarkdownLink,
-                        // p: MarkdownParagraph,
+                        a: MarkdownLink,
+                        p: MarkdownParagraph,
                         // code: MarkdownCodeBlock,
                         // br: MarkdownBreak,
                         // img: MarkdownImage,

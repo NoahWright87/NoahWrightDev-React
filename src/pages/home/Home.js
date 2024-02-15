@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import MainContainer from "../../components/layout/MainContainer";
 import { RecentPosts } from "../blog/PostList";
 import { ProjectCarousel } from "../projects/Projects";
+import InfoPopupNew from "../../components/InfoPopup";
 
 const textToRepeat = "This is a sentence that will get repeated to make lots of text. ";
 

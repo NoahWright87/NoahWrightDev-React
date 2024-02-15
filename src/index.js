@@ -32,6 +32,16 @@ root.render(
   </React.StrictMode>
 );
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }, [pathname]);
+
+  return null;
+}
+
 function RootNode() {
   // TODO: Implement Google Analytics somewhere in here
 
@@ -49,6 +59,7 @@ function RootNode() {
     <ThemeProvider theme={theme}>
       {/* Wrap the app so it can call useLocation() */}
         <BrowserRouter>
+          <ScrollToTop />
           <AnimationTest setTheme={themeSetter} theme={theme} />
         </BrowserRouter>
       <Box
@@ -116,13 +127,11 @@ function AnimationTest({setTheme, theme}) {
         minHeight: '100vh',
       }}
     >
-      {/* <TopBar /> */}
       <Header setTheme={setTheme} theme={theme} />
       <Container
         maxWidth={false}
         disableGutters
         sx={{
-          // backgroundColor: '#ddd',
         }}
         >
         {/* <TransitionGroup> */}
@@ -140,6 +149,13 @@ function AnimationTest({setTheme, theme}) {
         {/* </TransitionGroup> */}
 
       </Container>
+      <Box
+        sx={{
+          flexGrow: 1,
+        }}
+      >
+        {/* To keep the Footer at the bottom on short pages. */}
+      </Box>
       <Footer />
     </Box>
 
