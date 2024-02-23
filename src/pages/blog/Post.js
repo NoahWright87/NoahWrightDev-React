@@ -19,6 +19,7 @@ import MarkdownCodeBlock from '../../components/markdown/MarkdownCodeBlock';
 import MarkdownHeading, { titleToId } from '../../components/markdown/MarkdownHeading';
 import MarkdownBreak from '../../components/markdown/MarkdownBreak';
 import MarkdownImage from '../../components/markdown/MarkdownImage';
+import { TocFromMarkdown } from '../../components/floating_toc/FloatingToc';
 
 export default function Post() {
     const { id } = useParams();
@@ -33,7 +34,6 @@ export default function Post() {
     let nextPost = allPosts[i + 1];
 
     let opacity = post.image ? 0.6 : 0.0;
-    console.log(post.image);
 
     useEffect(() => {
         getPostContent(id).then(post => {
@@ -50,8 +50,6 @@ export default function Post() {
             backgroundSize: 'cover',
             backgroundColor: 'primary.dark',
             backgroundPosition: 'center',
-            // opacity: 0.5,// {opacity}, //todo: make this conditional on whether there's an image
-            // boxShadow: 'inset 0 0 0 2000px rgba(0, 0, 0, ' + opacity + ')',
             boxShadow: 'inset 0 0 0 2000px rgba(255, 255, 255, ' + opacity + ')',
             textShadow: '2px 2px 2px #666666',
         }}
@@ -85,16 +83,20 @@ export default function Post() {
             </Typography>
         </Box>
     </Box>
-    {markdownToC(content, showToc, setShowToc)}
+    {/* {markdownToC(content, showToc, setShowToc)} */}
+    {TocFromMarkdown({content})}
     </>;
 
     let footer = <Box
         sx={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(5, 1fr)',
+            gridTemplateColumns: 'repeat(2, 1fr)',
             gridTemplateRows: 'repeat(2, 1fr)',
-            gridTemplateAreas: `"left left middle right right"
-            "left left middle right right"`
+            gridTemplateAreas: `"left right"
+                                "left right"
+                                "bottom bottom"`
+            // gridTemplateAreas: `"left left middle right right"
+            //                     "left left middle right right"`
         }}
     >
         <Box
@@ -113,11 +115,11 @@ export default function Post() {
         </Box>
         <Box
             sx={{
-                gridArea: 'middle',
+                gridArea: 'bottom',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                
+                height: '100px',
             }}
         >
             <Button
@@ -185,6 +187,9 @@ export default function Post() {
                         clickable
                         key={tag}
                         label={tag}
+                        sx={{
+                            mx: 0.25,
+                        }}
                         component={RouterLink}
                         to={'/blog/tag/' + tag}
                     />)}
@@ -280,6 +285,7 @@ function RelatedPostSnippet(args) {
             sx={{
                 display: 'flex',
                 p: 1,
+                height: '100%',
             }}
         >
             <CardActionArea
@@ -296,14 +302,20 @@ function RelatedPostSnippet(args) {
                 >
                     <ReactMarkdown children={post.title} remarkPlugins={[remarkGfm]} />
                 </Typography>
+                <Typography
+                    variant="body2"
+                >
+                    <ReactMarkdown children={post.snippet} remarkPlugins={[remarkGfm]} />
+                </Typography>
             </CardActionArea>
         </Card>
     </>;
 }
 
 function markdownToC(content, showToc, setShowToc) {
-    console.log(showToc, setShowToc);
+    return TocFromMarkdown({content});
 
+    // TODO: Remove all this and other now-irrelevant code
     if (!content) return <></>;
     const titles = [];
     const headerRegex = /^#{1,6}.+/g
@@ -313,7 +325,6 @@ function markdownToC(content, showToc, setShowToc) {
     });
 
     if (!titles || titles.length < 2) return <></>;
-    {/* TODO: Smooth scrolling */}
     return <>
         <Box
             sx={{
@@ -336,10 +347,8 @@ function markdownToC(content, showToc, setShowToc) {
                     position: 'relative',
                     top: '0',
                     right: '0%',
-                    // transform: 'translateY(-50%)',
                 }}
             >
-                {/* {showToc ? 'Hide TOC' : 'Show TOC'} */}
                 <TocIcon />
             </Button>
             <Box
@@ -348,7 +357,6 @@ function markdownToC(content, showToc, setShowToc) {
                     color: 'secondary.contrastText',
                     backgroundColor: 'secondary.main',
                     padding: 0.5,
-                    // width: '30vw',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -357,21 +365,9 @@ function markdownToC(content, showToc, setShowToc) {
                     top: '20vh',
                     bottom: '20vh',
                     transition: 'transform 0.3s ease',
-                    // width : showToc ? '30vw' : '0',
                     transform: showToc ? 'translateX(0)' : 'translateX(200%)',
                 }}
                 >
-                <Typography
-                    variant="h4"
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}
-                >
-                    {/* <TocIcon />Contents */}
-                </Typography>
                 {titles.map(title => (
                     tocEntry(title)
                 ))}

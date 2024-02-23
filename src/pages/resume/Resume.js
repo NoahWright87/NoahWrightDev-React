@@ -1,54 +1,12 @@
-import { Box, Button, Card, CardContent, CardHeader, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardHeader, Link, Typography } from "@mui/material";
 import MainContainer from "../../components/layout/MainContainer";
 import SkillChitGroup, { SkillOptions } from "../../components/skill_chit/SkillChit";
+import { Link as RouterLink } from "react-router-dom";
+import { FloatingToc } from "../../components/floating_toc/FloatingToc";
 
 const cardSx = {
     my: 2,
 };
-
-// TODO: Change to floating buttons that scroll to the section
-// eg: while on work, there will be a float "Education" with down arrow at the bottom
-//     as you scroll to education, that button fades, then a "Work" appears at top
-const toc = <>
-    <Box
-        sx={{
-            position: 'fixed',
-            top: "25%",
-            right: 2,
-            backgroundColor: 'info.light',
-            p: 2,
-            m: 2,
-            display: 'flex',
-            flexDirection: 'column',
-        }}
-    >
-        <Typography 
-            variant="h2"
-        >
-            Jump to...
-        </Typography>
-        <Button
-            variant="contained"
-            sx={{
-                my: 1,
-            }}
-            component="a"
-            href="#work"
-        >
-            Work experience
-        </Button>
-        <Button
-            variant="contained"
-            sx={{
-                my: 1,
-            }}
-            component="a"
-            href="#education"
-        >
-            Education
-        </Button>
-    </Box>
-</>;
 
 // TODO: Have different visualizations of the resume + ability to switch between them
 export default function Resume() {
@@ -66,14 +24,14 @@ export default function Resume() {
 
     return <MainContainer
         title="Resume"
-        banner={toc}
+        banner={<FloatingToc titles={["Work experience", "Education"]} />}
     >
         <Typography
             variant="body1"
             gutterBottom
         >
-            Download my one-page resume <a href="files/NoahWrightResume.pdf">as a PDF</a>
-            or <a href="files/NoahWrightResume.docx">as a Word document</a>
+            Download my one-page resume <Link component={RouterLink} to="files/NoahWrightResume.pdf">as a PDF</Link> or
+            <Link component={RouterLink} to="/files/NoahWrightResume.docx">as a Word document</Link>.
         </Typography>
         <Typography
             variant="h2"
@@ -157,8 +115,15 @@ export default function Resume() {
 }
 
 function formattedDateRange(startDate, endDate, format) {
-    let startFormatted = new Date(startDate).toLocaleDateString('en-us', format);
-    let endFormatted = endDate ? new Date(endDate).toLocaleDateString('en-us', format) : 'Present';
+    startDate = new Date(startDate);
+    endDate = endDate ? new Date(endDate) : null;
+    
+    // Add a day to the end date so it's inclusive
+    startDate = new Date(startDate.setDate(startDate.getDate() + 1));
+    endDate = endDate ? new Date(endDate.setDate(endDate.getDate() + 1)) : null;
+
+    let startFormatted = startDate.toLocaleDateString('en-us', format);
+    let endFormatted = endDate ? endDate.toLocaleDateString('en-us', format) : 'Present';
 
     return `${startFormatted} - ${endFormatted}`;
 }
@@ -212,9 +177,30 @@ const resumeData = new ResumeData({
     workItems: [
         new ResumeWorkItem({
             title: "Software Engineer",
+            company: "Signify Health",
+            startDate: "2023-03-01",
+            endDate: null,
+            accomplishments: [
+                "Developed highly reliable k8s cron job. Optimized routes via GCP API, reducing drive time/distance 10%",
+                "Led code quality initiatives. Packaged common code, improved test coverage, shortened release cycles",
+                "Hosted biweekly org-wide learning sessions. Shared best practices, tools, and experiences across teams",
+            ],
+            image: "/images/logos/signify-health-logo.svg",
+            // summary: "TODO: Summarize...",
+            skills: [
+                SkillOptions.CSharp,
+                SkillOptions.SQL,
+                SkillOptions.TypeScript,
+                SkillOptions.Angular,
+                SkillOptions.Azure,
+                SkillOptions.WebApis,
+            ]
+        }),
+        new ResumeWorkItem({
+            title: "Software Engineer",
             company: "Google",
             startDate: "2022-03-01",
-            endDate: null,
+            endDate: "2023-02-01",
             accomplishments: [
                 "Maintained TypeScript and closure template front ends, applying accessibility best practices.",
                 "Implemented secure proxy for gRPC calls. Wrote Java code for backend microservices.",

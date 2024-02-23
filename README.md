@@ -15,21 +15,8 @@ get cleaned up before I push it out to the web.  I'll list future work here.
 
 This is what needs to be done before first publishing the React-based version of the site.
 
-- Some pages scroll horizontally for no particular reason?
-- Resume page.
-    - Add Signify Health to the page itself.
-    - Update resume with Signify Health info.
-        - Need logo
-    - Links at the top don't follow styling.
 - Fill in some posts so there isn't a HUGE gap.
-- Blog posts
-    - Prev/next buttons at the bottom look awkward.
-        - IDEA: Make a "mini" PostSnippet that is used here instead?
-        - IDEA2: Remove it, do something later??
-    - Tags section could look better.
-    - Main text should be bigger, easier to read.
 - Project page
-    - Snippets should include links in the bottom-left (opposite the skill chits).
     - Each project just has "lorem ipsum" nonsense right now.
     - Maybe have more than 2 projects??
 - Color scheme
@@ -46,3 +33,6 @@ Features I'd like to add long-term will go here.
 - Paginated blog post list.
 - Animation between pages.
 - Support for "asides".  Format would be: `This is an ^aside^(this text shows up on hover/click).`
+- Implement Microsoft Clarity!
+- Blog posts
+    - Tags section could look better.

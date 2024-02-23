@@ -1,4 +1,4 @@
-import { Box, Card, CardActionArea, Typography } from '@mui/material';
+import { Box, Button, Card, CardActionArea, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { AnimatedCarousel } from '../../components/carousel/AnimatedCarousel';
 import MainContainer from '../../components/layout/MainContainer';
@@ -71,6 +71,20 @@ export function ProjectSnippet(project) {
                 >
                     <SkillChitGroup skills={project.skills} />
                 </Box>
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        bottom: 10,
+                        left: 10,
+                    }}
+                >
+                    {project.links.map((link, index) => (
+                        <Button key={index} href={link.url} target="_blank" rel="noopener noreferrer">
+                            {link.text}
+                        </Button>
+                    ))}
+                </Box>
+                
             </Box>
         </Card>
     </CardActionArea>
@@ -160,7 +174,7 @@ export const projectData= [
                 text: "View site",
                 url: "https://letsmakeaprogram.com/",
                 icon: null,
-            }
+            },
         ],
         skills: [
             SkillOptions.CSharp,
